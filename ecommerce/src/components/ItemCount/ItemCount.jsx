@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { Button, ButtonGroup, Flex } from '@chakra-ui/react'
 
-const ItemCount = ({stock, valorInicial, onAdd}) => {
-    const [ count, setCount ] = useState(valorInicial)
+const ItemCount = ({stock, initialValue, onAdd, maxAvailable}) => {
+    const [ count, setCount ] = useState(initialValue)
     
 
     const incrementar = () => {
-        count < stock && setCount(count + 1)
+        count < maxAvailable && setCount(count + 1)
     }
 
     const decrementar = () => {
-        count > valorInicial && setCount(count - 1) 
+        count > initialValue && setCount(count - 1) 
     }
 
   return (

@@ -9,6 +9,7 @@ import TibetanosYagra from"../assets/Imagenes/Tibetanos-Yagra.jpg";
 import TibetanosPFlorOriental from"../assets/Imagenes/TibetanosP-FlorOriental.jpg";
 import TibetanosPNamaste from"../assets/Imagenes/TibetanosP-Namaste.jpg";
 import ConosAmber from"../assets/Imagenes/Conos-AmberMusk.jpg";
+import Logo from"../assets/Imagenes/Logo.png";
 
 export const productos = [
     {
@@ -129,7 +130,7 @@ export const productos = [
       stock: 5,
       descripcion:
         "Los sahumerios tibetanos son de aromas naturales, intensos y extra fuerte Tienen la capacidad de llevar a tu hogar el equilibrio, energía y modificar tus estados de animo Limpian la energía de todos los espacios como propósito espiritual, Aleja las energías negativas de nuestros entornos y permiten neutralizar los olores con ricas fragancias, Recomendado para procesos de sanación o meditación, Cada paquete trae 8 varillas a base de carbón vegetal con una duración de 60 minutos aproximadamente cada varilla",
-      img: "https://drive.google.com/file/d/1D1F_PwEyft9jIcEzIKPRkyPW7knzD8AG/view?usp=drive_link",
+      img: Logo,
     },
   ];
   

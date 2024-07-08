@@ -1,8 +1,52 @@
-# React + Vite
+# Mambo Astral
+## elevando tus sentidos
+### Logo
+![image](./src/assets/Imagenes/Logo.png)
+### Deploy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Descripcion
+Ecommerce creado para una tienda holistica
 
-Currently, two official plugins are available:
+### Construido
+React
+FireBase
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Dependencias
+Chakra
+Axios
+React icons
+React Router dom
+React Spinners
+React tostify
+SweelAlert2
+
+### Instalacion
+#### list
+- Clonar repositorio
+    - Git clone https://github.com/MDespinel/MamboAstral
+- moverse a la carpeta del proyecto
+    - cd ecommerce
+- instalar las dependencias
+    -npm install
+- Compilamos
+    - npm run dev
+
+### Estructura del proyecto
+
+#### NavBar
+Logo
+Menu de categorias
+Icono de carrito
+
+#### Body
+Listado de productos
+Detalle del producto
+
+#### Navegacion
+Enrutamiento entre las diferentes vistas
+
+#### Carrito
+Vista del carrito de compras
+
+#### Checkout
+Formulario para completar los datos del usuario

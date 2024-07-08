@@ -1,32 +1,104 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import { ToastContainer, toast } from 'react-toastify';
-import { Box, Text, VStack } from '@chakra-ui/react';
-import 'react-toastify/dist/ReactToastify.css';
+import { Card, CardHeader, CardBody, CardFooter, Flex, Box, Text, Heading, Image,  Avatar,  IconButton, Button, Center} from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
+import Context from '../context/CartContext';
+import { px } from 'framer-motion';
 
-const ItemDetail = ({ nombre, stock }) => {
+const ItemDetail = ({ categoria, descripcion, img, nombre, precio, id, stock, currentQuantity}) => {
+  const [ cantidad, setCantidad] = useState(0)
+  const { addItem } = useContext(Context)
+  const maxAvailable = stock - currentQuantity
 
   const onAdd = (quantity) => {
-    toast(`Agregaste ${quantity} unidades`);
+    const item = {
+      id,
+      nombre,
+      precio,
+      img,
+      stock,
+    }
+    addItem(item, quantity)
+    toast(`Agregaste ${quantity} unidades`)
+    setCantidad(quantity)
   }
 
   return (
-    <Box
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      boxShadow="md"
-      padding="6"
-      width="300px"
-      margin="auto"
-    >
-      <VStack spacing="4">
-        <Text fontWeight="bold" fontSize="2xl">{nombre}</Text>
-        <ItemCount stock={stock} valorInicial={1} onAdd={onAdd} />
-        <ToastContainer />
-      </VStack>
-    </Box>
-  );
+    <Card maxW='md' mt={10} ml={10}>
+    <CardHeader>
+        <Image
+            objectFit='cover'
+            src={img}
+            alt={nombre}
+            borderRadius='md'
+            boxSize='100%'
+            w={'400px'}
+            h='400px' 
+        />
+    </CardHeader>
+    <CardBody>
+    <Flex flex='1' gap='4' justify='center' alignItems='center' flexWrap='wrap'>
+        <Box w={'100%'}>
+            <Heading 
+                size='md' 
+                textAlign={'center'}>
+                {nombre}
+            </Heading>
+            <Text fontSize='lg' textAlign={'center'}>Categoría: {categoria}</Text>
+        </Box>
+        <Text textAlign={'center'} fontSize='small'>
+        {descripcion}
+        </Text>
+    </Flex>
+        <Text fontSize='3xl' textAlign={'center'} mt={10} color={'#243F4D'} fontWeight={'bold'}>
+            ${precio}
+        </Text>
+        <Text fontSize='xl' textAlign={'center'} mt={1} color={'#243F4D'}>
+        Stock disponible: {stock}
+        </Text>
+        <Text fontSize='xl' textAlign={'center'} mt={1} color={'#243F4D'}>
+        Cantidad actual en el carrito: {currentQuantity}
+        </Text>
+    </CardBody>
+
+
+    <CardFooter w={'100%'} p={0}>
+
+    {
+        cantidad > 0 ?
+        <Flex justify={'space-between'} align={'center'} w={'100%'}>
+            <Button 
+                bg={'#AD886E'} 
+                color={'#243F4D'}
+                w={'100%'}
+                h={'5vh'}
+                mt={11}
+                borderRadius={0}
+                _hover={{ bg: '#ECCDB7', color: '#243F4D' }}>
+                        <Link to='/cart'>Ir al carrito</Link> 
+            </Button>
+            <Button 
+                bg={'#AD886E'} 
+                color={'#243F4D'}
+                w={'100%'}
+                h={'5vh'}
+                mt={11}
+                borderRadius={0}
+                _hover={{ bg: '#ECCDB7', color: '#243F4D' }}>
+                                    <Link to='/'>Seguir comprando</Link> 
+            </Button>
+        </Flex>
+                        
+            :
+        <Flex justify={'center'} align={'center'} w={'100%'}>
+            <ItemCount stock={stock} initialValue={1} onAdd={onAdd} maxAvailable={maxAvailable} />
+        </Flex>
+    }
+    </CardFooter>
+    <ToastContainer />
+    </Card>
+)
 }
 
 export default ItemDetail;
